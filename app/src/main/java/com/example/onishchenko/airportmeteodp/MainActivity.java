@@ -77,14 +77,13 @@ public class MainActivity extends AppCompatActivity {
                 values = new ArrayList<>();
                 url = "http://meteopost.com/weather/dnepropetrovsk/";
                 Document document = Jsoup.connect(url).timeout(4000).get();
-                //TimeUnit.SECONDS.sleep(2);
                 if (document != null) {
                     Elements nextTurns = document.select("table table table table tr td:eq(1)");
                     for (Element nextTurn : nextTurns) {
                         values.add(nextTurn.text());
                     }
                 }
-                // Parsing of HTML to strings
+                //HTML to strings parsing
 
             }  catch (Exception e) {
                 e.printStackTrace();
@@ -104,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 pres.setText(values.get(5).toString());
                 wind.setText(values.get(8).toString());
                 changes.setText(values.get(12).toString());
-                weathertime.setText(getString(R.string.city) + ", погода на " + values.get(0).toString());
+                weathertime.setText(getString(R.string.city) +
+                        ", погода на " + values.get(0).toString());
             }
 
             refrButton.setVisibility(View.VISIBLE);
