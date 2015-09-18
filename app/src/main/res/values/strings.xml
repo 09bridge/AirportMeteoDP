@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AirportMeteoDP</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="search">...</string>
+    <string name="Refresh">Refresh</string>
+    <string name="temp1">Температура:</string>
+    <string name="tr">Точка роси:</string>
+    <string name="vp">Вологість повітря:</string>
+    <string name="press1">Тиск:</string>
+    <string name="wind1">Вітер:</string>
+    <string name="chan">Зміни на 30 хв:</string>
+    <string name="toast">Відсутнє підключення!</string>
+    <string name="city">Дніпропетровськ</string>
+</resources>
