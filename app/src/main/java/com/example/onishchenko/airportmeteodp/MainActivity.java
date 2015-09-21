@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     TextView temperature,
              dewPoint,
              humidity,
-             pres,
+             press,
              wind,
              changes,
              weatherTime;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         temperature = (TextView) findViewById(R.id.temperature);
         dewPoint = (TextView) findViewById(R.id.dewPoint);
         humidity = (TextView) findViewById(R.id.humidity);
-        pres = (TextView) findViewById(R.id.press);
+        press = (TextView) findViewById(R.id.press);
         wind = (TextView) findViewById(R.id.wind);
         changes = (TextView) findViewById(R.id.changes);
         weatherTime = (TextView) findViewById(R.id.weatherTime);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 temperature.setText(values.get(1).toString());
                 dewPoint.setText(values.get(3).toString());
                 humidity.setText(values.get(4).toString());
-                pres.setText(values.get(5).toString());
+                press.setText(values.get(5).toString());
                 wind.setText(values.get(8).toString());
                 changes.setText(values.get(12).toString());
                 weatherTime.setText(getString(R.string.city) +
