@@ -17,11 +17,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    RefreshTask refreshtask;
     String toast;
-    TextView temper,temperR,vlazh,pres,wind,changes,weathertime;
+    TextView temperature,
+             dewPoint,
+             humidity,
+             pres,
+             wind,
+             changes,
+             weatherTime;
     ProgressBar progressBar;
-    ImageButton refrButton;
+    ImageButton refreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +34,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        temper = (TextView) findViewById(R.id.temper);
-        temperR = (TextView) findViewById(R.id.temperR);
-        vlazh = (TextView) findViewById(R.id.vlazh);
-        pres = (TextView) findViewById(R.id.pres);
+        temperature = (TextView) findViewById(R.id.temperature);
+        dewPoint = (TextView) findViewById(R.id.dewPoint);
+        humidity = (TextView) findViewById(R.id.humidity);
+        pres = (TextView) findViewById(R.id.press);
         wind = (TextView) findViewById(R.id.wind);
         changes = (TextView) findViewById(R.id.changes);
-        weathertime = (TextView) findViewById(R.id.weathertime);
-        refrButton = (ImageButton) findViewById(R.id.refrButton);
+        weatherTime = (TextView) findViewById(R.id.weatherTime);
+        refreshButton = (ImageButton) findViewById(R.id.refreshButton);
         toast = getResources().getString(R.string.toast);
-        onClick(refrButton);
+        refreshClick(refreshButton);
     }
 
-    public void onClick(View v) {
-        refreshtask = new RefreshTask();
-        refreshtask.execute();
+    public void refreshClick(View v) {
+        RefreshTask refreshTask = new RefreshTask();
+        refreshTask.execute();
     }
 
     @Override
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-            refrButton.setVisibility(View.INVISIBLE);
+            refreshButton.setVisibility(View.INVISIBLE);
         }
 
         @Override
@@ -71,11 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected ArrayList doInBackground(Void... params) {
-            ArrayList<String> values = null;
-            String url;
+            ArrayList<String> values = new ArrayList<>();
             try {
-                values = new ArrayList<>();
-                url = "http://meteopost.com/weather/dnepropetrovsk/";
+                String url = "http://meteopost.com/weather/dnepropetrovsk/";
                 Document document = Jsoup.connect(url).timeout(4000).get();
                 if (document != null) {
                     Elements nextTurns = document.select("table table table table tr td:eq(1)");
@@ -96,18 +99,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList values) {
             super.onPostExecute(values);
-            if (values.size() > 0) {
-                temper.setText(values.get(1).toString());
-                temperR.setText(values.get(3).toString());
-                vlazh.setText(values.get(4).toString());
+            if (!values.isEmpty()) {
+                temperature.setText(values.get(1).toString());
+                dewPoint.setText(values.get(3).toString());
+                humidity.setText(values.get(4).toString());
                 pres.setText(values.get(5).toString());
                 wind.setText(values.get(8).toString());
                 changes.setText(values.get(12).toString());
-                weathertime.setText(getString(R.string.city) +
+                weatherTime.setText(getString(R.string.city) +
                         ", погода на " + values.get(0).toString());
             }
 
-            refrButton.setVisibility(View.VISIBLE);
+            refreshButton.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.INVISIBLE);
         }
 

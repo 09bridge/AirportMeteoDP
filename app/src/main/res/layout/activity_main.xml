@@ -36,7 +36,7 @@
                     android:text="@string/search"
                     android:textSize="@dimen/my_text_size"
                     android:gravity="center_horizontal"
-                    android:id="@+id/temper"
+                    android:id="@+id/temperature"
                     android:textColor="@color/switch_thumb_normal_material_light"
                     />
 
@@ -60,7 +60,7 @@
                     android:text="@string/search"
                     android:textSize="@dimen/my_text_size"
                     android:gravity="center_horizontal"
-                    android:id="@+id/temperR"
+                    android:id="@+id/dewPoint"
                     android:textColor="@color/switch_thumb_normal_material_light"
                     />
             </TableRow>
@@ -84,7 +84,7 @@
                     android:text="@string/search"
                     android:textSize="@dimen/my_text_size"
                     android:gravity="center_horizontal"
-                    android:id="@+id/vlazh"
+                    android:id="@+id/humidity"
                     android:textColor="@color/switch_thumb_normal_material_light"
                     />
             </TableRow>
@@ -108,7 +108,7 @@
                     android:text="@string/search"
                     android:textSize="@dimen/my_text_size"
                     android:gravity="center_horizontal"
-                    android:id="@+id/pres"
+                    android:id="@+id/press"
                     android:textColor="@color/switch_thumb_normal_material_light"
                     />
             </TableRow>
@@ -174,13 +174,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:id="@+id/weathertime"
+        android:id="@+id/weatherTime"
         android:textColor="@color/switch_thumb_normal_material_light"
         android:textSize="15sp"
         />
 
     <ImageButton
-        android:id="@+id/refrButton"
+        android:id="@+id/refreshButton"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center"
@@ -188,6 +188,6 @@
         android:src="@drawable/ic_action"
         android:background="@color/material_blue_grey_900"
         android:contentDescription="@string/Refresh"
-        android:onClick="onClick"
+        android:onClick="refreshClick"
         />
 </LinearLayout>
